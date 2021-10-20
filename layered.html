@@ -12,11 +12,12 @@
 </head>
 
 <body>
-    <h1>Vega-Lite graphs</h1>
-    <nav>
-        <a href="/simple.html">Simple</a>
-        <a href="/layered.html">Layered</a>
-    </nav>
+    <div id="graph"></div>
+    <script src="colors.js"></script>
+    <script src="layered.js"></script>
+    <script>
+        vegaEmbed('#graph', schema);
+    </script>
 </body>
 
 </html>
