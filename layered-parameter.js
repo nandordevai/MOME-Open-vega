@@ -10,6 +10,30 @@ const schema = {
     data: {
         url: 'data.csv',
     },
+    params: [
+        {
+            name: 'cOpacity',
+            value: 100,
+            bind: {
+                input: 'range',
+                name: 'Corn Opacity',
+                min: 0,
+                max: 100,
+                step: 1,
+            },
+        },
+        {
+            name: 'mOpacity',
+            value: 100,
+            bind: {
+                input: 'range',
+                name: 'Meteors Opacity',
+                min: 0,
+                max: 100,
+                step: 1,
+            },
+        },
+    ],
     width: 800,
     height: 500,
     encoding: {
@@ -29,6 +53,9 @@ const schema = {
                 type: 'line',
                 interpolate: 'monotone',
                 color: colors.meteor,
+                opacity: {
+                    expr: 'mOpacity / 100',
+                },
             },
             encoding: {
                 y: {
@@ -50,6 +77,9 @@ const schema = {
                 type: 'line',
                 interpolate: 'monotone',
                 color: colors.corn,
+                opacity: {
+                    expr: 'cOpacity / 100',
+                },
             },
             encoding: {
                 y: {

@@ -72,3 +72,64 @@ const schema = {
         },
     },
 };
+
+const options = {
+    view: {
+        renderer: "canvas",
+    },
+};
+
+vl.register(vega, vegaLite, options);
+vl.layer(
+    vl.markLine({
+        interpolate: 'monotone',
+    })
+        .encode(
+            vl.x().field('year').type('temporal').timeUnit('year').axis({
+                tickCount: 'year',
+                title: null,
+            }),
+            vl.y().field('meteors').type('quantitative').axis({
+                title: 'Total meteors observed',
+                titleColor: colors.meteor,
+            }).scale({
+                domain: [20000, 120000],
+            }),
+            vl.color().value(colors.meteor),
+        ),
+    vl.markLine({
+        interpolate: 'monotone',
+    })
+        .encode(
+            vl.x().field('year').type('temporal').timeUnit('year').axis({
+                tickCount: 'year',
+                title: null,
+            }),
+            vl.y().field('corn').type('quantitative').axis({
+                title: 'Fresh sweet corn (lbs per capita)',
+                titleColor: colors.corn,
+            }).scale({
+                domain: [5.0, 10.0],
+            }),
+            vl.color().value(colors.corn),
+        )
+)
+    .data('data.csv')
+    .config({
+        axis: {
+            labelFontSize: 12,
+            titleFontSize: 14,
+            titleFontWeight: 'normal',
+        },
+    })
+    .resolve({
+        scale: {
+            y: 'independent',
+        },
+    })
+    .width(800)
+    .height(500)
+    .render()
+    .then((el) => {
+        document.querySelector('#graph').appendChild(el);
+    });
