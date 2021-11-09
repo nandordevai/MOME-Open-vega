@@ -94,7 +94,50 @@ const schema = {
                     },
                 },
             },
-        }
+        },
+        {
+            mark: 'rule',
+            encoding: {
+                opacity: {
+                    condition: {
+                        value: .5,
+                        param: 'hover',
+                        empty: false,
+                    },
+                    value: 0,
+                },
+                tooltip: [
+                    {
+                        field: 'year',
+                        type: 'temporal',
+                        timeUnit: 'year',
+                        title: 'Year',
+                    },
+                    {
+                        field: 'meteors',
+                        type: 'quantitative',
+                        title: 'Meteors',
+                    },
+                    {
+                        field: 'corn',
+                        type: 'quantitative',
+                        title: 'Corn',
+                    },
+                ],
+            },
+            params: [
+                {
+                    name: 'hover',
+                    select: {
+                        type: 'point',
+                        fields: ['year'],
+                        nearest: true,
+                        on: 'mouseover',
+                        clear: 'mouseout',
+                    },
+                }
+            ],
+        },
     ],
     resolve: {
         scale: {
