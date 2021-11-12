@@ -9,7 +9,11 @@ const schema = {
                     type: 'filter',
                     expr: 'datum.year > 2016 && datum.metascore !== ""',
                 },
-                { type: 'nest', keys: ['year', 'genre'], generate: true },
+                {
+                    type: 'nest',
+                    keys: ['year', 'genre'],
+                    generate: true
+                },
                 {
                     type: 'tree',
                     method: 'tidy',
@@ -23,8 +27,8 @@ const schema = {
             name: 'links',
             source: 'tree',
             transform: [
-                { type: 'treelinks' },
-                { type: 'linkpath', orient: 'horizontal', shape: 'diagonal' },
+                { type: 'treelinks' }, // links between nodes
+                { type: 'linkpath', orient: 'horizontal', shape: 'diagonal' }, // visual link ie. the path itself
             ],
         },
         {

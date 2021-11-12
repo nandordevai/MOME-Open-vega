@@ -56,6 +56,7 @@ const schema = {
                 opacity: {
                     expr: 'mOpacity / 100',
                 },
+                tooltip: true,
             },
             encoding: {
                 y: {
@@ -79,6 +80,9 @@ const schema = {
                 color: colors.corn,
                 opacity: {
                     expr: 'cOpacity / 100',
+                },
+                tooltip: {
+                    content: 'data', // v. encoding
                 },
             },
             encoding: {
