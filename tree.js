@@ -3,7 +3,7 @@ const schema = {
     data: [
         {
             name: 'tree',
-            url: 'https://raw.githubusercontent.com/nandordevai/MOME-Open-vega/main/top-1000-extended-posters.json',
+            url: '/top-1000-extended-posters.json',
             transform: [
                 {
                     type: 'filter',
