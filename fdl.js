@@ -36,9 +36,7 @@ const schema = {
             encode: {
                 enter: {
                     fill: { scale: 'color', field: 'group' },
-                },
-                update: {
-                    size: 2 * 8 * 8,
+                    size: 128,
                 },
             },
             transform: [
@@ -48,7 +46,6 @@ const schema = {
                     static: false,
                     forces: [
                         { force: 'center', x: { signal: 'cx' }, y: { signal: 'cy' } },
-                        { force: 'collide', radius: 8, },
                         { force: 'nbody', strength: -30 },
                         { force: 'link', links: 'link-data', distance: 50 },
                     ],
